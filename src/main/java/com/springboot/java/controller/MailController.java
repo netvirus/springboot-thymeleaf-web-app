@@ -48,6 +48,16 @@ public class MailController {
         return "redirect:list";
     }
 
+    @GetMapping("delete/{id}")
+    public String deleteMail(@PathVariable("id") int id, Model model) {
+        Mail mail = this.mailRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid mail id: " + id));
+
+        this.mailRepository.delete(mail);
+        model.addAttribute("mail", this.mailRepository.findAll());
+        return "index";
+    }
+
     @GetMapping("update/{id}")
     public String updateMail(@PathVariable("id") int id, @Validated Mail mail, BindingResult result, Model model) {
         if (result.hasErrors()) {
