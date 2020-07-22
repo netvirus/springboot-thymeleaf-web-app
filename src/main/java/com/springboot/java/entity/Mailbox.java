@@ -3,8 +3,8 @@ package com.springboot.java.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "mail")
-public class Mail {
+@Table(name = "mailboxes")
+public class Mailbox {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -15,10 +15,10 @@ public class Mail {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "patronymic")
@@ -27,14 +27,14 @@ public class Mail {
     @Column(name = "active")
     private boolean active = true;
 
-    @Column(name = "isAdmin")
+    @Column(name = "is_admin")
     private boolean isAdmin = false;
 
-    public Mail() {
+    public Mailbox() {
 
     }
 
-    public Mail(String login, String password, String firstName, String lastName, String patronymic) {
+    public Mailbox(String login, String password, String firstName, String lastName, String patronymic) {
         setLogin(login);
         setPassword(password);
         setFirstName(firstName);
