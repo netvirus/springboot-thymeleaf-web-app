@@ -27,9 +27,6 @@ public class Mailbox {
     @Column(name = "active")
     private boolean active = true;
 
-    @Column(name = "is_admin")
-    private boolean isAdmin = false;
-
     public Mailbox() {
 
     }
@@ -98,11 +95,4 @@ public class Mailbox {
         this.active = active;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
 }

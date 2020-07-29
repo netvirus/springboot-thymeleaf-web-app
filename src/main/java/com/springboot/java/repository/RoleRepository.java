@@ -1,10 +1,11 @@
 package com.springboot.java.repository;
 
-import com.springboot.java.entity.Mailbox;
+import com.springboot.java.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MailboxRepository extends JpaRepository<Mailbox, Integer> {
-    Mailbox findByLogin(String login);
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+    Role findByRole(String role);
+
 }
