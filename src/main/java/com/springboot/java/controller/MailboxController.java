@@ -50,7 +50,7 @@ public class MailboxController {
     }
 
     @PostMapping("admin/add")
-    public String addMail(@Validated Mailbox mailbox, BindingResult result, Model model) {
+    public String addMail(@Valid Mailbox mailbox, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "/admin/add-mailbox";
         }
