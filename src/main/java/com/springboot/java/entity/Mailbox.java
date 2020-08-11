@@ -28,7 +28,7 @@ public class Mailbox {
     private int profileId;
 
     @Transient
-    private String profileName;
+    private Profile profile;
 
     @Column(name = "active")
     private boolean active = true;
@@ -43,7 +43,6 @@ public class Mailbox {
         setFirstName(firstName);
         setLastName(lastName);
         setPatronymic(patronymic);
-        setProfileId(profileId);
     }
 
     public int getId() {
@@ -95,19 +94,19 @@ public class Mailbox {
     }
 
     public int getProfileId() {
-        return profileId;
+        return profile.getId();
     }
 
     public void setProfileId(int profileId) {
-        this.profileId = profileId;
+        profile.setId(profileId);
     }
 
-    public String getProfileName() {
-        return profileName;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public boolean isActive() {

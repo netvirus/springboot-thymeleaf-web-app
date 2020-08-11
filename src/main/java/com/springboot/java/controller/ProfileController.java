@@ -33,9 +33,9 @@ public class ProfileController {
         User user = userService.findUserByUserName(auth.getName());
         model.addAttribute("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         model.addAttribute("adminMessage","Content Available Only for Users with Admin Role");
-        List<Profile> profiles = new ArrayList<>();
-        profileRepository.findAll().forEach(profiles::add);
-        model.addAttribute("profiles", profiles);
+//        List<Profile> profiles = new ArrayList<>();
+//        profileRepository.findAll().forEach(profiles::add);
+        model.addAttribute("profiles", profileRepository.findAll());
         return "/admin/profiles";
     }
 
