@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -41,9 +42,14 @@ public class MailboxController {
 
     @GetMapping("/admin/edit/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        Mailbox mailbox = this.mailboxRepository.findById(id)
+        Mailbox mailbox = mailboxRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid mailbox id: " + id));
         Iterable<Profile> profiles = profileRepository.findAll();
+        profiles.forEach((Profile p) -> {
+            if (p.getId() == mailbox.getProfileId()) {
+                mailbox.setProfileName(p.getProfileName());
+            }
+        });
         model.addAttribute("profiles", profiles);
         model.addAttribute("mailbox", mailbox);
         return "/admin/update-mailbox";
@@ -64,7 +70,7 @@ public class MailboxController {
 
         Iterable<Mailbox> mailboxes = mailboxRepository.findAll();
         mailboxes.forEach((Mailbox m) -> {
-           m.setProfile(profiles.get(m.getProfileId()));
+           m.setProfileName(profiles.get(m.getProfileId()).getProfileName());
         });
         model.addAttribute("mailbox", mailboxes);
         return "/admin/index";

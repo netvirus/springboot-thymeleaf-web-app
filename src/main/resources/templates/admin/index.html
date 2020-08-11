@@ -60,7 +60,7 @@
                                 <td th:text="${email.firstName}"></td>
                                 <td th:text="${email.lastName}"></td>
                                 <td th:text="${email.patronymic}"></td>
-                                <td th:text="${email.getProfile().getProfileName()}"></td>
+                                <td th:text="${email.getProfileName()}"></td>
                                 <td th:text="${email.active} ? 'ENABLED' : 'DISABLED'"></td>
                                 <td th:switch="${email.active}">
                                     <span th:case="'true'">ENABLED</span>
