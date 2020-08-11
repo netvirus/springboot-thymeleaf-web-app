@@ -27,6 +27,9 @@ public class Mailbox {
     @Column(name = "profile_id")
     private int profileId;
 
+    @Transient
+    private String profileName;
+
     @Column(name = "active")
     private boolean active = true;
 
@@ -99,6 +102,14 @@ public class Mailbox {
         this.profileId = profileId;
     }
 
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -106,5 +117,4 @@ public class Mailbox {
     public void setActive(boolean active) {
         this.active = active;
     }
-
 }

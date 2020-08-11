@@ -10,8 +10,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class ProfileController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(name = "/admin/profiles")
+    @GetMapping(name = "/admin/list-profiles")
     public String showProfiles(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUserName(auth.getName());
@@ -33,7 +36,7 @@ public class ProfileController {
         List<Profile> profiles = new ArrayList<>();
         profileRepository.findAll().forEach(profiles::add);
         model.addAttribute("profiles", profiles);
-        return "profiles";
+        return "/admin/profiles";
     }
 
     @GetMapping("/admin/profile/showForm")
@@ -41,4 +44,12 @@ public class ProfileController {
         return "/admin/add-profile";
     }
 
+    @PostMapping("admin/addProfile")
+    public String addMail(@Valid Profile profile, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "/admin/add-profile";
+        }
+        profileRepository.save(profile);
+        return "redirect:/admin/list-profiles";
+    }
 }

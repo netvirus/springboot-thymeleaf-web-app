@@ -1,8 +1,10 @@
 package com.springboot.java.controller;
 
 import com.springboot.java.entity.Mailbox;
+import com.springboot.java.entity.Profile;
 import com.springboot.java.entity.User;
 import com.springboot.java.repository.MailboxRepository;
+import com.springboot.java.repository.ProfileRepository;
 import com.springboot.java.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class MailboxController {
@@ -25,6 +29,9 @@ public class MailboxController {
 
     @Autowired
     private MailboxRepository mailboxRepository;
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     @GetMapping("/admin/showForm")
     public String mailForm(Mailbox mailbox) {
@@ -45,7 +52,18 @@ public class MailboxController {
         User user = userService.findUserByUserName(auth.getName());
         model.addAttribute("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         model.addAttribute("adminMessage","Content Available Only for Users with Admin Role");
-        model.addAttribute("mailbox", this.mailboxRepository.findAll());
+
+        Iterable<Profile> _profiles = profileRepository.findAll();
+        Map<Integer, Profile> profiles = new HashMap();
+        _profiles.forEach((Profile p) -> {
+            profiles.put(p.getId(), p);
+        });
+
+        Iterable<Mailbox> mailboxes = mailboxRepository.findAll();
+        mailboxes.forEach((Mailbox m) -> {
+           m.setProfileName(profiles.get(m.getProfileId()).getProfileName());
+        });
+        model.addAttribute("mailbox", mailboxes);
         return "/admin/index";
     }
 

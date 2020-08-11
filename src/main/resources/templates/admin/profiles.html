@@ -48,7 +48,7 @@
                             <tr th:each="profile : ${profiles}">
                                 <td th:text="${profile.id}"></td>
                                 <td th:text="${profile.profileName}"></td>
-                                <td th:text="${profile.profileSize}"></td>
+                                <td th:text="${profile.mailboxSize}"></td>
                                 <td><a th:href="@{/admin/profile/edit/{id}(id=${profile.id})}" class="btn btn-primary"><i class="fas fa-user-edit"></i></a></td>
                                 <td><a th:href="@{/admin/profile/delete/{id}(id=${profile.id})}" class="btn btn-primary"><i class="fas fa-user-slash"></i></a></td>
                             </tr>

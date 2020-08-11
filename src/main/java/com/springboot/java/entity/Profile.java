@@ -18,7 +18,8 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String profileName, long mailboxSize) {
+    public Profile(int id, String profileName, long mailboxSize) {
+        this.id = id;
         this.profileName = profileName;
         this.mailboxSize = mailboxSize;
     }
