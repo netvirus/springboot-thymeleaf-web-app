@@ -43,6 +43,15 @@
                             <input type="text" th:field="*{patronymic}" class="form-control" id="patronymic" placeholder="Отчество">
                             <span th:if="${#fields.hasErrors('patronymic')}" th:errors="patronymic" class="text-danger"></span>
                         </div>
+                        <div class="col-lg-3" th:object="${profiles}">
+                            <select class="form-control" id="profiles" name="profiles">
+                                <option value="${mailbox.getProfileId()}">${mailbox.getProfileId()}</option>
+                                <option th:each="profile : ${profiles}"
+                                        th:value="${profile.getId()}"
+                                        th:text="${profile.getProfileName()}"></option>
+                            </select>
+                        </div>
+
                         <div class="form-group col-md-8">
                             <input type="submit" class="btn btn-primary" value="Update Mailbox">
                         </div>
