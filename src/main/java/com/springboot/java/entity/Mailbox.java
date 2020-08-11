@@ -24,6 +24,9 @@ public class Mailbox {
     @Column(name = "patronymic")
     private String patronymic;
 
+    @Column(name = "profile_id")
+    private int profileId;
+
     @Column(name = "active")
     private boolean active = true;
 
@@ -31,12 +34,13 @@ public class Mailbox {
 
     }
 
-    public Mailbox(String login, String password, String firstName, String lastName, String patronymic) {
+    public Mailbox(String login, String password, String firstName, String lastName, String patronymic, int profileId) {
         setLogin(login);
         setPassword(password);
         setFirstName(firstName);
         setLastName(lastName);
         setPatronymic(patronymic);
+        setProfileId(profileId);
     }
 
     public int getId() {
@@ -85,6 +89,14 @@ public class Mailbox {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public int getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(int profileId) {
+        this.profileId = profileId;
     }
 
     public boolean isActive() {

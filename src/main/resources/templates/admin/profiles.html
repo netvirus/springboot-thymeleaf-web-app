@@ -22,11 +22,17 @@
         </button>
     </form>
 
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:utext="${userName}"></span>
+            </div>
+
      <div class="card">
         <div class="card-body">
             <div th:switch="${profiles}" class="container">
                 <p class="my-5">
-                    <a href="/admin/showForm" class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Добавить профиль</i></a>
+                    <a href="/admin/profile/showForm" class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Добавить профиль</i></a>
                 </p>
                 <div class="col-md-10">
                     <h2 th:case="null">Нет не одного профиля!</h2>
@@ -49,12 +55,11 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
-        </div>
+     </div>
+            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
 </div>
 </body>
 </html>
