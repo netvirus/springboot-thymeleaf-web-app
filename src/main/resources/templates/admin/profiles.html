@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mailbox Admin Panel - Profiles</title>
+    <title>Mailbox Admin Panel - Профили</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -26,7 +26,8 @@
         <div class="card-body">
             <div th:switch="${profiles}" class="card">
                 <p class="my-5">
-                    <a href="/admin/profile/showForm" class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Добавить профиль</i></a>
+                    <a href="/admin/profile/showFormAdd" class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Добавить профиль</i></a>
+                    <a href="/admin/home" class="btn btn-primary"> Назад </a>
                 </p>
                 <div class="col-md-10">
                     <h2 th:case="null">Нет не одного профиля!</h2>

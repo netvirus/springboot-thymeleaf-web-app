@@ -32,13 +32,13 @@ public class ProfileController {
         return "/admin/profiles";
     }
 
-    @GetMapping("/admin/profile/showForm")
+    @GetMapping("/admin/profile/showFormAdd")
     public String profileForm() {
         return "/admin/add-profile";
     }
 
-    @PostMapping("/admin/addProfile")
-    public String addProfile(@Valid Profile profile, BindingResult result) {
+    @PostMapping("/admin/profile/add")
+    public String addProfile(@Valid Profile profile, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "/admin/add-profile";
         }
@@ -49,8 +49,8 @@ public class ProfileController {
     @GetMapping("/admin/profile/edit/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
         Profile profile = this.profileRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid mailbox id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid profile id: " + id));
         model.addAttribute("profile", profile);
-        return "/admin/update-mailbox";
+        return "/admin/update-profile";
     }
 }
