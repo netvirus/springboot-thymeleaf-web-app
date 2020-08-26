@@ -22,12 +22,6 @@
         </button>
     </form>
 
-    <div class="card" style="margin-top:20px">
-            <div class="card-header" th:align="center">
-                <span th:utext="${userName}"></span>
-            </div>
-    </div>
-
     <div class="card">
         <div class="card-body" th:align="center">
             <div th:switch="${mailboxes}" class="card">
@@ -78,7 +72,6 @@
             </div>
         </div>
     </div>
-            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
 </div>
 </body>
 </html>

@@ -57,11 +57,6 @@ public class MailboxController {
 
     @GetMapping("/admin/list")
     public String mailList(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUserName(auth.getName());
-        model.addAttribute("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        model.addAttribute("adminMessage","Content Available Only for Users with Admin Role");
-
         Iterable<Profile> _profiles = profileRepository.findAll();
         Map<Integer, Profile> profiles = new HashMap();
         _profiles.forEach((Profile p) -> profiles.put(p.getId(), p));
