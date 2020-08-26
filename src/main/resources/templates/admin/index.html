@@ -30,7 +30,7 @@
 
     <div class="card">
         <div class="card-body" th:align="center">
-            <div th:switch="${mailbox}" class="card">
+            <div th:switch="${mailboxes}" class="card">
                 <p class="card-text">
                     <a href="/admin/home" class="btn btn-primary"><i class="fas fa-home ml-2"> Домой</i></a>
                     <a href="/admin/showForm" class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Добавить ящик</i></a>
@@ -54,7 +54,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="email : ${mailbox}">
+                            <tr th:each="email : ${mailboxes}">
                                 <td th:text="${email.login}"></td>
                                 <td th:text="${email.password}"></td>
                                 <td th:text="${email.firstName}"></td>

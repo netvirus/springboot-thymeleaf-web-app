@@ -64,15 +64,11 @@ public class MailboxController {
 
         Iterable<Profile> _profiles = profileRepository.findAll();
         Map<Integer, Profile> profiles = new HashMap();
-        _profiles.forEach((Profile p) -> {
-            profiles.put(p.getId(), p);
-        });
+        _profiles.forEach((Profile p) -> profiles.put(p.getId(), p));
 
         Iterable<Mailbox> mailboxes = mailboxRepository.findAll();
-        mailboxes.forEach((Mailbox m) -> {
-           m.setProfileName(profiles.get(m.getProfileId()).getProfileName());
-        });
-        model.addAttribute("mailbox", mailboxes);
+        mailboxes.forEach((Mailbox m) -> m.setProfileName(profiles.get(m.getProfileId()).getProfileName()));
+        model.addAttribute("mailboxes", mailboxes);
         return "/admin/index";
     }
 
@@ -109,7 +105,7 @@ public class MailboxController {
             mailbox.setActive(true);
         }
         this.mailboxRepository.save(mailbox);
-        model.addAttribute("mailbox", this.mailboxRepository.findAll());
+        model.addAttribute("mailboxes", this.mailboxRepository.findAll());
         return "/admin/index";
     }
 
