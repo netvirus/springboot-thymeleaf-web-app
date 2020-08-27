@@ -54,10 +54,10 @@
                                 <td th:text="${email.lastName}"></td>
                                 <td th:text="${email.patronymic}"></td>
                                 <td th:text="${email.getProfileName()}"></td>
-<!--                                <td th:text="${email.active} ? 'ENABLED' : 'DISABLED'"></td>-->
+                                <td th:text="${email.active} ? 'ON' : 'OFF'"></td>
                                 <td th:switch="${email.active}">
-                                    <span th:case="'true'">ENABLED</span>
-                                    <span th:case="'false'">DISABLED</span>
+                                    <span th:case="'true'">ON</span>
+                                    <span th:case="'false'">OFF</span>
                                 </td>
                                 <td><a th:href="@{/admin/edit/{id}(id=${email.id})}" class="btn btn-primary"><i class="fas fa-user-edit"></i></a></td>
                                 <td><a th:href="@{/admin/changestate/{id}(id=${email.id})}" class="btn btn-primary"><i class='fas fa-user-lock'></i></a></td>
