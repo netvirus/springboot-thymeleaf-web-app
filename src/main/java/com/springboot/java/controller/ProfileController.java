@@ -33,7 +33,7 @@ public class ProfileController {
     }
 
     @GetMapping("/admin/profile/showFormAdd")
-    public String profileForm() {
+    public String profileForm(Profile profile) {
         return "/admin/add-profile";
     }
 

@@ -26,7 +26,7 @@
                         <div class="form-group col-md-8">
                             <label for="mailboxSize" class="col-form-label">Размер (мб)</label>
                             <input type="text" th:field="*{mailboxSize}" class="form-control" id="mailboxSize" placeholder="Размер">
-                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{mailboxSize}" class="text-danger"></span>
+                            <span th:if="${#fields.hasErrors('mailboxSize')}" th:errors="*{mailboxSize}" class="text-danger"></span>
                         </div>
                         <div class="col-md-6">
                             <input type="submit" class="btn btn-primary" value="Добавить профиль">

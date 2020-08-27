@@ -111,7 +111,7 @@ public class MailboxController {
             return "/admin/update-mailbox";
         }
         this.mailboxRepository.save(mailbox);
-        model.addAttribute("mailbox", this.mailboxRepository.findAll());
-        return "/admin/index";
+        model.addAttribute("mailboxes", this.mailboxRepository.findAll());
+        return "redirect:/admin/list";
     }
 }

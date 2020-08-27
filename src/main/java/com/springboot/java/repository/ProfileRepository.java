@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EntityScan(basePackages = {"com.springboot.java.entity"})
 public interface ProfileRepository extends CrudRepository<Profile, Integer> {
+
 }
